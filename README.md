@@ -7,5 +7,5 @@
 export ALLOW_MISSING_DEPENDENCIES=true
 . build/envsetup.sh
 lunch twrp_kyoto-eng
-make recoveryimage
+make bootimage
 ```

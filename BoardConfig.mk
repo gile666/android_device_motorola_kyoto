@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+DEVICE_PATH := device/motorola/kyoto
+
+
 # Bootloader
 BOARD_VENDOR := motorola
 TARGET_SOC := k6853v1_64_6360
@@ -27,14 +30,14 @@ TARGET_OTA_ASSERT_DEVICE := kyoto
 
 # Architecture
 TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-a
+TARGET_ARCH_VARIANT := armv8-2a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := cortex-a55
 TARGET_CPU_VARIANT_RUNTIME := cortex-a55
 
 TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv8-a
+TARGET_2ND_ARCH_VARIANT := armv8-2a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a55
@@ -58,11 +61,20 @@ TARGET_BOARD_PLATFORM_GPU := mali-g57
 # A/B
 AB_OTA_UPDATER := true
 TW_INCLUDE_REPACKTOOLS := true
+TARGET_NO_RECOVERY := true
+BOARD_USES_RECOVERY_AS_BOOT := true
+AB_OTA_PARTITIONS += \
+    boot \
+    dtbo \
+    system \
+    vendor \
+    vbmeta
 
 # Kernel
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 buildvariant=user
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
+
 BOARD_BOOTIMG_HEADER_VERSION := 2
 BOARD_KERNEL_BASE := 0x40078000
 BOARD_KERNEL_PAGESIZE := 2048
@@ -80,12 +92,25 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/motorola/kyoto
 TARGET_KERNEL_CONFIG := kyoto_defconfig
 
+
+# fstab
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
+
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
+
+# Dynamic/Logical Partitions
+BOARD_MOTOROLA_DYNAMIC_PARTITIONS_PARTITION_LIST := product system system_ext vendor
+BOARD_MOTOROLA_DYNAMIC_PARTITIONS_SIZE := 6442450944
+BOARD_SUPER_PARTITION_GROUPS := motorola_dynamic_partitions
+BOARD_SUPER_PARTITION_SIZE := 12884901888
+
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432
 
 # System as root
 BOARD_ROOT_EXTRA_FOLDERS := cache carrier data_mirror efs avb linkerconfig metadata

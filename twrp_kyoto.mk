@@ -31,6 +31,9 @@ PRODUCT_PACKAGES += \
     charger_res_images
 
 PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/motorola/kyoto/recovery/root,recovery/root)
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/motorola/kyoto/prebuilt,prebuilt)
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/motorola/kyoto/prebuilt,out/target/product/kyoto/kernel/prebuilt)
+
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_NAME := twrp_kyoto
