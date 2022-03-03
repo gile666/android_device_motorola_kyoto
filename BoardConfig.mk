@@ -56,7 +56,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 
 # Platform
 TARGET_BOARD_PLATFORM := mt6853
-TARGET_BOARD_PLATFORM_GPU := mali-g57
+TARGET_BOARD_PLATFORM_GPU := "mali-g57 mc3"
 
 # A/B
 AB_OTA_UPDATER := true
@@ -71,7 +71,7 @@ AB_OTA_PARTITIONS += \
     vbmeta
 
 # Kernel
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 buildvariant=user
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
 
@@ -90,7 +90,7 @@ BOARD_KERNEL_IMAGE_NAME := Image.gz
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/motorola/kyoto
-TARGET_KERNEL_CONFIG := kyoto_defconfig
+TARGET_KERNEL_CONFIG := forforksake_kyoto_defconfig
 
 
 # fstab
