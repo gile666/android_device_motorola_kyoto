@@ -96,7 +96,7 @@ TARGET_KERNEL_CONFIG := kyoto_defconfig
 # fstab
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
 
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 
 # Dynamic/Logical Partitions
 BOARD_MOTOROLA_DYNAMIC_PARTITIONS_PARTITION_LIST := product system system_ext vendor
